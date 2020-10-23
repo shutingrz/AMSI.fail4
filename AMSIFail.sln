@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30413.136
+VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMSIFail", "AMSIFail\AMSIFail.csproj", "{22126F83-A070-4655-951D-76AF8D744DE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMSI.Fail4", "AMSIFail\AMSIFail.csproj", "{CFA9DA32-D637-4D27-940D-D7BF63A0AD23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{22126F83-A070-4655-951D-76AF8D744DE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{22126F83-A070-4655-951D-76AF8D744DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{22126F83-A070-4655-951D-76AF8D744DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{22126F83-A070-4655-951D-76AF8D744DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA9DA32-D637-4D27-940D-D7BF63A0AD23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA9DA32-D637-4D27-940D-D7BF63A0AD23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA9DA32-D637-4D27-940D-D7BF63A0AD23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA9DA32-D637-4D27-940D-D7BF63A0AD23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3BA4F50F-6FAC-43C1-B95D-3F35A9F91BE6}
+		SolutionGuid = {E86359DE-5DC3-4D31-BE62-665EA793FD55}
 	EndGlobalSection
 EndGlobal
